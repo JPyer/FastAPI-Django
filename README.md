@@ -22,3 +22,9 @@ The views are more straightforward than you’d expect. We have the GET/POST on 
 Also, notice how authentication is done with the Depends(get_user) dependency, making it mandatory for each endpoint, and the simulation parameter is an actual Simulation model instance, not an ID. The model instance also gets validated to make sure it actually belongs to the user. We’ll see exactly how in a later section.
 ## Utils
 In this file we define methods to authenticate users and retrieve objects from the database by their ID while still making sure they belong to the authenticating user. get_object is a generic function to avoid repeating ourselves for every one of our models.
+## Tests
+The tests are very close to what you’re already used to from Django. We’ll be using Django’s testing harness/runner, but we can test FastAPI’s views by using FastAPI’s client. We’ll also be using Django’s/unittest’s assert functions, as I find them more convenient, but you can use anything you’d use with Django for those.
+As I mentioned earlier, the plain TestCase didn’t work for me, so I had to use the TransactionTestCase.
+## Be careful
+You need to use this custom runner, otherwise PostgreSQL connections don’t get cleaned up, for some reason. I’d love to figure out why, but after hours of debugging I didn’t manage to get anywhere, so I added this workaround.
+You need to add TEST_RUNNER = "main.TestRunner" to your settings.py to use that.
