@@ -17,4 +17,8 @@ This will allow Uvicorn to load and serve our app. Keep in mind that app is Fast
 You can start the server by running uvicorn goatfish.wsgi:app --reload, but it’ll probably crash at this point because there are no URL routes yet. Let’s add them.  
 ## The routes
 I prefer the Django convention of having each app’s route in a urls.py in the app directory, so let’s put them there:
-
+## The views
+The views are more straightforward than you’d expect. We have the GET/POST on the collection and GET/POST/PUT/DELETE on the object, but the heavy lifting is done by the from_model/from_api methods.
+Also, notice how authentication is done with the Depends(get_user) dependency, making it mandatory for each endpoint, and the simulation parameter is an actual Simulation model instance, not an ID. The model instance also gets validated to make sure it actually belongs to the user. We’ll see exactly how in a later section.
+## Utils
+In this file we define methods to authenticate users and retrieve objects from the database by their ID while still making sure they belong to the authenticating user. get_object is a generic function to avoid repeating ourselves for every one of our models.
