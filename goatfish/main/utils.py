@@ -11,9 +11,7 @@ from django.db import models
 from fastapi import Header
 from fastapi import HTTPException
 from fastapi import Path
-
-from main.models import Simulation
-from main.models import User
+from goatfish.main.models import Simulation,User
 
 # This is to avoid typing it once every object.
 API_KEY_HEADER = Header(..., description="The user's API key.")

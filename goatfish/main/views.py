@@ -6,7 +6,6 @@ from fastapi import Depends
 
 from .models import APISimulation
 from .models import APISimulations
-from .models import APIUser
 from .models import DamnFastAPISimulation
 from .models import Simulation
 from .models import User
