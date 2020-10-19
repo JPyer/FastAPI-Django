@@ -8,3 +8,8 @@ To begin, install FastAPI, Uvicorn and Django and create a Django project as you
 The models  
 We should probably start with our data model so everything else makes sense. The API is going to be a straightforward CRUD API, which will serve a model we’ll call Simulation and provide authentication.  
 Since we have an API and a database, and the models for the two are neither semantically nor functionally identical, we’ll have two sections in our models.py, one for each model type.
+# Create a project and define an engineering data model
+python manage.py startproject goatfish  
+python manage.py startapp main
+
+
