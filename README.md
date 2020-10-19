@@ -28,3 +28,6 @@ As I mentioned earlier, the plain TestCase didn’t work for me, so I had to use
 ## Be careful
 You need to use this custom runner, otherwise PostgreSQL connections don’t get cleaned up, for some reason. I’d love to figure out why, but after hours of debugging I didn’t manage to get anywhere, so I added this workaround.
 You need to add TEST_RUNNER = "main.TestRunner" to your settings.py to use that.
+## Last wishes
+I hope that was clear enough, there is a bit of confusion when trying to figure out which part is served by which library, but I’m confident that you’ll be able to figure it all out without much difficulty. Just keep in mind that FastAPI does everything view-specific and Django does everything else.
+I was legitimately surprised at how well the two libraries worked together, and how minimal the amounts of hackery involved were. I don’t really see myself using anything else for APIs in the future, as the convenience of using both libraries is hard to beat. I hope that asynchronicity will work when Django releases async support, which would complete this integration and give us the best of both worlds.
